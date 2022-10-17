@@ -25,5 +25,6 @@ int		ft_tolower(int c);
 size_t	ft_strlen(const char *c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

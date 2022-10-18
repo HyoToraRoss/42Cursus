@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
@@ -21,26 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)&s[i]);
 		i++;
 	}
+	if (c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }
-
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char str[] = "It is like this";
-
-	char *c = ft_strchr(str, 'l');
-	printf("%s\n", c);
-
-	char *fail = ft_strchr(str, '@');
-	if (fail == NULL)
-		printf("Could not find @!\n");
-	return (0);
-}
-//The strchr() function locates the first occurrence of c (converted to a char)
-// in the string pointed to by s.  The terminating null character is considered
-// to be part of the string; therefore if c is ‘\0’, the functions locate the 
-//terminating ‘\0’.  The functions strchr() and strrchr() return a pointer to 
-//the located character, or NULL if the character does not appear in the string.

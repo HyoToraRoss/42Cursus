@@ -16,7 +16,7 @@ CFlags = -Wall -Werror -Wextra -I.
 
 OFILES = $(FILES:%=%.o)
 
-OUTN = LIBRARY.a
+OUTN = $(LIBRARY).a
 
 NAME = $(OUTN)
 

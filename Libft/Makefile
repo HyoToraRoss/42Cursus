@@ -30,11 +30,9 @@ OFILES = $(FILES:%=%.o)
 
 all: $(NAME)
 
-#$(NAME):
-#	$(CC) $(FLAGS) -c $(SRC) -I./
-#	ar -rc $(NAME) $(OFILES)
 $(NAME):
-	$(CC) -o $(NAME) $(SRC)
+	$(CC) $(FLAGS) -c $(SRC) -I./
+	ar -rc $(NAME) $(OFILES)
 
 clean:
 	rm -f $(NAME)

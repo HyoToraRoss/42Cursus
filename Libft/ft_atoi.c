@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:28:33 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/27 13:47:50 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:48:13 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,4 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (end * result);
-}
-
-#include <stdio.h>
-
-int main (void)
-{
-	char	nptr[] = "    784awef6528bjhfej";
-
-	printf("%i\n", ft_atoi(nptr));
-	printf("%i\n", atoi(nptr));
 }

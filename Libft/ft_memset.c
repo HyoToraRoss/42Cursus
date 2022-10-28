@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:30:50 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/28 16:56:05 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:05:28 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
+	char	*str;
 	size_t	i;
 
+	str = (char *)s;
+	i = 0;
 	while (i < n)
 	{
-		s[i] = c;
-		i++,
+		str[i] = c;
+		i++;
 	}
-	return (s);
 }
-
-//The memset() function fills the first n bytes of the memory area pointed
-//to by s with the constant byte c

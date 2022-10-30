@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:46:20 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/28 18:24:42 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:52:09 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	l = (char *)little;
 	if (l[0] == '\0')
 		return (b);
-
 	i = 0;
 	while (b[i] != '\0')
 	{

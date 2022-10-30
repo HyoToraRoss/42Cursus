@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:28:33 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/27 13:48:13 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:51:45 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	result = 1;
 	end = 0;
-	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t' 
+	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t'
 		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
 	while (nptr[i] == '+' || nptr[i] == '-')

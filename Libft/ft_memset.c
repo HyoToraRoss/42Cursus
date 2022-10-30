@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:30:50 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/28 18:05:28 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:07:42 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	*ft_memset(void *s, int c, size_t n)
 		str[i] = c;
 		i++;
 	}
+	return (str);
 }

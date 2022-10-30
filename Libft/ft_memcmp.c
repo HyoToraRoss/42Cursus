@@ -6,23 +6,27 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:21:31 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/27 12:08:18 by martavar         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:56:26 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-       size_t i;
+	size_t	i;
+	char	*str1;
+	char	*str2;
 
-       i = 0;
-       while (s1[i] && s2[i] && i < n)
-       {
-              if (s1[i] == s2[i])
-                     i++;
-       }
-       return (s2 - s1);
+	i = 0;
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	while (str1[i] && str2[i] && i < n)
+	{
+		if (str1[i] == str2[i])
+			i++;
+	}
+	return (str2 - str1);
 }
 
 //The memcmp() function compares the first n bytes (each interpreted as

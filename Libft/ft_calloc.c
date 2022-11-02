@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:48:52 by martavar          #+#    #+#             */
-/*   Updated: 2022/10/30 16:57:26 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/02 16:55:41 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*str;
 	size_t	i;
 
-	*str = (void *)malloc(nmemb * size);
+	str = (void *)malloc(nmemb * size);
 	if (str == 0)
 		return (0);
-	while (i < count * size)
+	while (i < nmemb * size)
 	{
 		str[i] = 0;
 		i++;
 	}
-	return (str);
+	return ((str);
 }
 
 //calloc() function allocates memory for an array of nmemb elements of size

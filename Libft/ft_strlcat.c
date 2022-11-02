@@ -15,27 +15,20 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	len_src;
-	size_t	len_dst;
+	size_t	j;
 
 	i = 0;
-	if (0 < size)
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	while (src[j] && (i + j + 1) < size)
 	{
-		while (dst[i] != '\0')
-			i++;
-		len_dst = i;
-		len_src = 0;
-		while (i < size - 1 && src[len_src] != '\0')
-		{
-			dst[i] = src[len_src];
-			i++;
-			len_src++;
-		}
-		dst[i] = '\0';
+		dst[i + j] = src[j];
+		j++;
 	}
-	while (src[len_src] != '\0')
-		len_src++;
-	return (len_dst + len_src);
+	if (i < size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }
 
 //The strlcat() function appends the null-terminated string src to 

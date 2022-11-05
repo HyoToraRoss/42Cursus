@@ -11,38 +11,36 @@
 # **************************************************************************** #
 
 NAME = libft.a
+SRC = ft_isalpha ft_isdigit\
+ft_isalnum ft_isascii\
+ft_isprint ft_strlen\
+ft_memset ft_bzero\
+ft_memcpy ft_memmove\
+ft_strlcpy ft_strlcat\
+ft_toupper ft_tolower\
+ft_strchr ft_strrchr\
+ft_strncmp ft_memchr\
+ft_memcmp ft_strnstr\
+ft_atoi\
+ft_calloc ft_strdup\
+ft_substr ft_strjoin ft_strtrim #ft_split ft_strmapi ft_striteri\
+#ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd ft_split\
 
-SRC = ft_bzero.c ft_strlen.c ft_strlcpy.c ft_substr.c ft_strjoin.c\
-	ft_strncmp.c ft_strdup.c ft_atoi.c ft_isdigit.c ft_isascii.c\
-	ft_isprint.c ft_isalpha.c ft_isalnum.c ft_toupper.c ft_tolower.c\
-	ft_strnstr.c ft_strtrim.c ft_split.c\
-	ft_strlcat.c ft_memset.c ft_memcpy.c ft_memcmp.c\
-	ft_memmove.c ft_memchr.c ft_strchr.c ft_strrchr.c ft_calloc.c
+#BONUS = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back\
+ft_lstdelone ft_lstclear ft_lstiter ft_lstmap\
 
-OBJS = ft_bzero.o ft_strlen.o ft_strlcpy.o ft_substr.o ft_strjoin.o\
-	ft_strncmp.o ft_strdup.o ft_atoi.o ft_isdigit.o ft_isascii.o\
-	ft_isprint.o ft_isalpha.o ft_isalnum.o ft_toupper.o ft_tolower.o\
-	ft_strnstr.o ft_strtrim.o ft_split.o\
-	ft_strlcat.o ft_memset.o ft_memcpy.o ft_memcmp.o\
-	ft_memmove.o ft_memchr.o ft_strchr.o ft_strrchr.o ft_calloc.o
+CC =gcc
+RM =rm -f
+CFLAGS = -Wall -Werror -Wextra -I.
 
-FLAGS = -Wall -Wextra -Werror
+all:$(NAME)
 
-CC = gcc
-
-HEADER = libft.h
-
-all: $(NAME)
-
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRC)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
+$(NAME): $(SRC:=.o)
+			ar rc $(NAME) $(SRC:=.o)
 clean:
-	rm -rf $(OBJS)
-
+	$(RM)	$(SRC:=.o) $(BONUS:=.o)
 fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
+		$(RM)	$(NAME)
+re:	fclean	$(NAME)
+bonus:	$(SRC:=.o)	$(BONUS:=.o)
+		ar rc $(NAME) $(SRC:=.o)	$(BONUS:=.o)

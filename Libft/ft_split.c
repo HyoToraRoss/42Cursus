@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 22:07:17 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/06 23:39:46 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:54:56 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,41 +33,43 @@ static int	counter(char const *str, char c)
 
 char	**ft_split(char const *str, char c)
 {
-	size_t	i;
-	size_t	j;
-	char	**split;
-	int		startword;
+	int		i;
+	int		j;
+	int		k;
+	char	**temp;
 
-	if (!str)
-		return (0);
-	split = malloc((counter(str, c) + 1) * sizeof(char *));
-	if (!split)
-		return (0);
+	temp = malloc(sizeof(char **) * (counter(str, c) + 1));
+	if (!temp || !str)
+		return (NULL);
 	i = 0;
-	j = 0;
-	startword = -1;
-	while (i <= ft_strlen(s))
+	k = 0;
+	while (str[i])
 	{
-		if (s[i] != c && startword < 0)
-			startword = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && startword >= 0)
+		while (str[i] == c)
+			i++;
+		j = i;
+		while (str[i] && str[i] != c)
+			i++;
+		if (i > j)
 		{
-			split[j++] = word_dup(s, startword, i);
-			startword = -1;
+			ft_strlcpy(temp[k++], str + j, i);
 		}
-		i++;
 	}
-	split[j] = 0;
-	return (split);
+	temp[k] = NULL;
+	return (temp);
 }
 
 /*
 #include <stdio.h>
-
-int main(void)
+ 
+int      main(void)
 {
-	//char test[] = "\njrS58VHQ    \n      p70fL       Kx2sRP0So3E4rC9  \n nebpv3J5ousO84Pa1HjUQOImUhjwZpGn    \n \n   X28iT7Ap9   DIYAF9ZSpKcs0Rcv\n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
-	char test[] = "DIYAF9ZSpKcs0Rcv \n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
+	//char test[] = "\njrS58VHQ    \n      p70fL       Kx2sRP0So3E4rC9  \n|
+		nebpv3J5ousO84Pa1HjUQOImUhjwZpGn    \n \n   X28iT7Ap9   DIYAF9ZSpK|
+		cs0Rcv\n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8|
+		R9zUvZEtOwmqf\n    ";
+	char test[] = "DIYAF9ZSpKcs0Rcv \n uzO\n        \nZ7zjEeonALOKQF5xq \n  |
+		 \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
 	 
 	char **arr = ft_split(test, '\n');
 	 

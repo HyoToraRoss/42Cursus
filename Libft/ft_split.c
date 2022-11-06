@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 22:07:17 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/06 22:20:22 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:39:46 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	counter(char const *str, char c)
 	{
 		while (str[i] == c)
 			i++;
-		while (str[i] != c)
+		while (str[i] != '\0')
 			counter++;
 		while (str[i] && str[i] != c)
 			i++;
@@ -31,49 +31,51 @@ static int	counter(char const *str, char c)
 	return (counter);
 }
 
-char	*ft_strndup(const char *s1, size_t n)
-{
-	char	*str;
-	size_t	i;
-
-	str = malloc(sizeof(char) * (n + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
 char	**ft_split(char const *str, char c)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**temp;
+	size_t	i;
+	size_t	j;
+	char	**split;
+	int		startword;
 
-	temp = malloc(sizeof(char **) * (counter(str, c) + 1));
-	if (!temp)
-		return (NULL);
+	if (!str)
+		return (0);
+	split = malloc((counter(str, c) + 1) * sizeof(char *));
+	if (!split)
+		return (0);
 	i = 0;
-	k = 0;
-	while (str[i])
+	j = 0;
+	startword = -1;
+	while (i <= ft_strlen(s))
 	{
-		while (str[i] == c)
-			i++;
-		j = i;
-		while (str[i] && str[i] != c)
-			i++;
-		if (i > j)
+		if (s[i] != c && startword < 0)
+			startword = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && startword >= 0)
 		{
-			temp[k] = ft_strndup(str + j, i - j);
-			k++;
+			split[j++] = word_dup(s, startword, i);
+			startword = -1;
 		}
+		i++;
 	}
-	temp[k] = NULL;
-	return (temp);
+	split[j] = 0;
+	return (split);
 }
+
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	//char test[] = "\njrS58VHQ    \n      p70fL       Kx2sRP0So3E4rC9  \n nebpv3J5ousO84Pa1HjUQOImUhjwZpGn    \n \n   X28iT7Ap9   DIYAF9ZSpKcs0Rcv\n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
+	char test[] = "DIYAF9ZSpKcs0Rcv \n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
+	 
+	char **arr = ft_split(test, '\n');
+	 
+	int i = 0;
+	while (arr[i] != 0)
+	{
+		printf("[%s]\n", arr[i]);
+		++i;
+	}
+}
+*/

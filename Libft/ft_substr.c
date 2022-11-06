@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:15:00 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/05 19:11:34 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/06 14:44:40 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
-
-//your substr does not work when start >= ft_strlen(s)

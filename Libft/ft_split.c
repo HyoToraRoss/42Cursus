@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 22:07:17 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/06 23:54:56 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:34:39 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ static int	counter(char const *str, char c)
 	counter = 0;
 	while (str[i])
 	{
-		while (str[i] == c)
-			i++;
-		while (str[i] != '\0')
+		if (str[i] != c)
+		{
 			counter++;
-		while (str[i] && str[i] != c)
+			while (str[i] != c && str[i])
+				i++;
+		}
+		else
 			i++;
 	}
 	return (counter);
@@ -36,10 +38,10 @@ char	**ft_split(char const *str, char c)
 	int		i;
 	int		j;
 	int		k;
-	char	**temp;
+	char	**split;
 
-	temp = malloc(sizeof(char **) * (counter(str, c) + 1));
-	if (!temp || !str)
+	split = malloc(sizeof(char **) * (counter(str, c) + 1));
+	if (!split || !str)
 		return (NULL);
 	i = 0;
 	k = 0;
@@ -52,11 +54,12 @@ char	**ft_split(char const *str, char c)
 			i++;
 		if (i > j)
 		{
-			ft_strlcpy(temp[k++], str + j, i);
+			split[k] = ft_substr(str, j, j - i + 1);
+			k++;
 		}
 	}
-	temp[k] = NULL;
-	return (temp);
+	split[k] = NULL;
+	return (split);
 }
 
 /*

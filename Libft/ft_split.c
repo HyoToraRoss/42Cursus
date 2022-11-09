@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 22:07:17 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/07 15:34:39 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/09 21:28:48 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**ft_split(char const *str, char c)
 			i++;
 		if (i > j)
 		{
-			split[k] = ft_substr(str, j, j - i + 1);
+			split[k] = ft_substr(str, j, i - j);
 			k++;
 		}
 	}

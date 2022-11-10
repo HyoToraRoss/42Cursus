@@ -6,18 +6,22 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:39:19 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/09 22:30:41 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:30:12 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	nbr_len(int n)
+static unsigned int	nbr_size(int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (0 < n)
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		i++;
+	while (n != 0)
 	{
 		n /= 10;
 		i++;
@@ -27,30 +31,28 @@ int	nbr_len(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*nbr;
-	int		len;
+	char			*str;
+	unsigned int	nbr;
+	unsigned int	size;
 
-	len = nbr_len(n);
-	nbr = malloc(sizeof(char *) * (len + 2));
-	if (!nbr)
+	size = nbr_size(n);
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str == NULL)
 		return (NULL);
-	if (n == 0)
-		nbr[0] = '0';
-	while (0 < len)
+	nbr = n;
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			nbr[0] = '-';
-			n *= -1;
-			len += 1;
-		}
-		if (n > 0)
-		{
-			n /= 10;
-			nbr[len] = n % 10 + '0';
-			len--;
-		}
+		str[0] = '-';
+		nbr = -n;
 	}
-	nbr[len + 1] = '\0';
-	return (nbr);
+	if (nbr == 0)
+		str[0] = '0';
+	str[size] = '\0';
+	while (nbr != 0)
+	{
+		str[size - 1] = (nbr % 10) + '0';
+		nbr /= 10;
+		size--;
+	}
+	return (str);
 }

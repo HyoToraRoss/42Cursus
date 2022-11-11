@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 22:07:17 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/09 21:28:48 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:25:09 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,3 @@ char	**ft_split(char const *str, char c)
 	split[k] = NULL;
 	return (split);
 }
-
-/*
-#include <stdio.h>
- 
-int      main(void)
-{
-	//char test[] = "\njrS58VHQ    \n      p70fL       Kx2sRP0So3E4rC9  \n|
-		nebpv3J5ousO84Pa1HjUQOImUhjwZpGn    \n \n   X28iT7Ap9   DIYAF9ZSpK|
-		cs0Rcv\n uzO\n        \nZ7zjEeonALOKQF5xq \n   \nQxp0b1ufFKGJ \n2n8|
-		R9zUvZEtOwmqf\n    ";
-	char test[] = "DIYAF9ZSpKcs0Rcv \n uzO\n        \nZ7zjEeonALOKQF5xq \n  |
-		 \nQxp0b1ufFKGJ \n2n8R9zUvZEtOwmqf\n    ";
-	 
-	char **arr = ft_split(test, '\n');
-	 
-	int i = 0;
-	while (arr[i] != 0)
-	{
-		printf("[%s]\n", arr[i]);
-		++i;
-	}
-}
-*/

@@ -6,16 +6,17 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/17 15:16:03 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:44:17 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char num_args*, ...)
 {
-
+	
 }
+
 
 /*
 %c Prints a single character.

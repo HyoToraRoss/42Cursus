@@ -6,15 +6,28 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/17 15:44:17 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:44:41 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_printf(const char num_args*, ...)
+int	ft_printf(const char conversions*, ...)
 {
-	
+	int		i;
+	int		str;
+	va_list	args;
+
+	str = ft_strlen(conversions);
+	va_start(args, converions);
+	i = 0;
+	while (i < conversions)
+	{
+		if ()
+		i++;
+	}
+	va_end(args);
+	return (str);
 }
 
 

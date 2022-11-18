@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/18 17:36:42 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:49:49 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,23 @@ void	ft_putchar(char c)
 void	ft_putout(char c)
 {
 	if (c == 'c')
-		putchar(va_arg(args, char));
+		putchar(va_arg(args, int));
 	if (c == 's')
 		putchar(va_arg(args, char *));
 	if (c == 'p')
-		putchar(va_arg(args, char *));
+		putchar(va_arg(args, unsigned long));
 	if (c == 'd')
-		ft_atoi(va_arg(args, float));
+		ft_atoi(va_arg(args, int));
 	if (c == 'i')
 		ft_atoi(va_arg(args, int));
 	if (c == 'u')
-		ft_atoi(va_arg(args, unsigned float));
+		ft_atoi(va_arg(args, unsigned int));
 	if (c == 'x')
-		ft_atoi(va_arg(args, float));
+		ft_atoi(va_arg(args, unsigned int));
 	if (c == 'X')
-		ft_atoi(va_arg(args, int));
+		ft_atoi(va_arg(args, unsigned int));
 	if (c == '%')
-		ft_putchar(va_arg(args, char));
-
-
-
-
-
-%x Prints a number in hexadecimal (base 16) lowercase format.
-%X Prints a number in hexadecimal (base 16) uppercase format.
-%% Prints a percent sign.
+		ft_putchar(%);
 }
 
 int	ft_printf(const char conversions*, ...)

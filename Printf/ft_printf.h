@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:12:33 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/18 15:36:44 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:33:00 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 
 int		ft_printf(const char *args, ...);
 size_t	ft_strlen(const char *c);
+int		ft_atoi(const char *nptr);
 
 #endif

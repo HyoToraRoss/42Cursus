@@ -6,11 +6,46 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/18 15:44:41 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:36:42 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
+
+void	ft_putout(char c)
+{
+	if (c == 'c')
+		putchar(va_arg(args, char));
+	if (c == 's')
+		putchar(va_arg(args, char *));
+	if (c == 'p')
+		putchar(va_arg(args, char *));
+	if (c == 'd')
+		ft_atoi(va_arg(args, float));
+	if (c == 'i')
+		ft_atoi(va_arg(args, int));
+	if (c == 'u')
+		ft_atoi(va_arg(args, unsigned float));
+	if (c == 'x')
+		ft_atoi(va_arg(args, float));
+	if (c == 'X')
+		ft_atoi(va_arg(args, int));
+	if (c == '%')
+		ft_putchar(va_arg(args, char));
+
+
+
+
+
+%x Prints a number in hexadecimal (base 16) lowercase format.
+%X Prints a number in hexadecimal (base 16) uppercase format.
+%% Prints a percent sign.
+}
 
 int	ft_printf(const char conversions*, ...)
 {
@@ -23,7 +58,10 @@ int	ft_printf(const char conversions*, ...)
 	i = 0;
 	while (i < conversions)
 	{
-		if ()
+		if (conversions[i] == '%')
+			ft_putout(conversions[i++]);
+		else
+			ft_putchar(conversions[i]);
 		i++;
 	}
 	va_end(args);

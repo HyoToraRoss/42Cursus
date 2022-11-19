@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/19 19:30:30 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/19 20:10:23 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_putstr(char *str)
 	return (len);
 }
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(long int nbr, char *base)
 {
 	if (nbr < 0)
 		return (ft_putchar('-') + ft_putnbr_base(nbr * -1, base));

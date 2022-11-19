@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/18 17:49:49 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:01:16 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ void	ft_putout(char c)
 		ft_putchar(%);
 }
 
-int	ft_printf(const char conversions*, ...)
+int	ft_printf(const char str*, ...)
 {
 	int		i;
-	int		str;
+	int		len;
 	va_list	args;
 
-	str = ft_strlen(conversions);
-	va_start(args, converions);
+	len = ft_strlen(str);
+	va_start(args, str);
 	i = 0;
-	while (i < conversions)
+	while (i < str)
 	{
-		if (conversions[i] == '%')
-			ft_putout(conversions[i++]);
+		if (str[i] == '%')
+			ft_putout(str[i++]);
 		else
-			ft_putchar(conversions[i]);
+			ft_putchar(str[i]);
 		i++;
 	}
 	va_end(args);
-	return (str);
+	return (len);
 }
 
 

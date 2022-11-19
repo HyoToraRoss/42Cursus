@@ -6,11 +6,11 @@
 #    By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 14:38:02 by martavar          #+#    #+#              #
-#    Updated: 2022/11/18 17:32:13 by martavar         ###   ########.fr        #
+#    Updated: 2022/11/19 19:20:58 by martavar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_printf.c ft_strlen.c ft_atoi.c
+SRCS		=	ft_printf.c ft_strlen.c
 
 OBJS		=	$(SRCS:.c=.o)
 

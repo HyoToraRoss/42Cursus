@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:43:42 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/19 20:30:25 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/20 15:57:06 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	ft_format(char str, va_list args)
 	if (str == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	if (str == 'p')
-		return (ft_putstr("0x")+ ft_putnbr_base(va_arg(args,unsigned long long),\
-			("0123456789abcdef")));
+		return (ft_putpointer(args));
 	if (str == 'd' || str == 'i')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	if (str == 'u')

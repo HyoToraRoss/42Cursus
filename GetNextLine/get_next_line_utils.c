@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:52:57 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/21 11:09:20 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:57:10 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,52 @@ size_t	ft_strlen(const char *c)
 	while (c[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	if (ft_strlen(s) < start)
+	{
+		str = malloc(sizeof(char));
+		*str = '\0';
+		return (str);
+	}
+	if (len >= ft_strlen(s))
+		len = (ft_strlen(s) - start);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	chr;
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char *)s;
+	chr = c;
+	while (str[i] != chr)
+	{
+		if (str[i] == '\0')
+		{
+			return (NULL);
+		}
+		i++;
+	}
+	return ((char *)str + i);
 }

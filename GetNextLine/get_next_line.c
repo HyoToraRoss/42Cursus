@@ -6,12 +6,13 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:51:59 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/26 10:32:01 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:46:36 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/*
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -31,6 +32,7 @@ char	*get_next_line(int fd)
 	backup = extract(line);
 	return (line);
 }
+*/
 
 #include <stdio.h>
 
@@ -43,6 +45,10 @@ int main()
 		exit (1);
 	}
 	char	line[100];
-	while(fgets(line, ))
+	while(fgets(line, sizeof(line), the_file))
+	{
+		//print the line
+		printf("%s", line);
+	}
 	return (0);
 }

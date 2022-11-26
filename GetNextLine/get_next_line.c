@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:51:59 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/26 12:46:36 by martavar         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:22:21 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int main()
 		//print the line
 		printf("%s", line);
 	}
+	fclose(the_file);                                                                                                                                        
 	return (0);
 }

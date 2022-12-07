@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:51:59 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/29 20:44:50 by martavar         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:27:12 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,18 @@ char	*get_next_line(int fd)
 {
 	static char	*buf;
 	char		*line;
-	int			i;
-	int			j;
 
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0 || !buf)
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (NULL);
 	line = NULL;
-	i = 0;
-	j = 0;
+	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (buf == NULL)
+		return (NULL);
 	while (0 < read(fd, buf, BUFFER_SIZE) || buf)
 	{
 		line = ft_strjoin(line, buf);
-		if (ft_strrchr(buf, '\n'))
-		{
-			while (buf[i] != '\n')
-				buf[i] = '\0';
-			while (buf[j] < i)
-				buf[j++] = buf[i];
-			buf[i++] = '\0';
+		if (ft_clean(buf))
 			break ;
-		}
 	}
 	return (line);
 }
@@ -54,6 +45,5 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-	if (buf == NULL)
-		return (NULL);
 */
+

@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:53:45 by martavar          #+#    #+#             */
-/*   Updated: 2022/11/29 20:36:36 by martavar         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:48:02 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *c);
-char	*ft_strrchr(char *s, int c);
+int		ft_clean(char *buf);
 
 #endif

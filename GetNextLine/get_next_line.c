@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:51:59 by martavar          #+#    #+#             */
-/*   Updated: 2022/12/07 16:27:12 by martavar         ###   ########.fr       */
+/*   Updated: 2022/12/09 11:54:36 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
+	int			i;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
+	i = 0;
+	if (BUFFER_SIZE < 1 || read(fd, 0, 0) < 0 || fd < 0)
+	{
+		while (buf[i])
+			buf[i++] = 0;
 		return (NULL);
+	}
 	line = NULL;
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (buf == NULL)
-		return (NULL);
-	while (0 < read(fd, buf, BUFFER_SIZE) || buf)
+	while (buf[0] || 0 < read(fd, buf, BUFFER_SIZE))
 	{
 		line = ft_strjoin(line, buf);
 		if (ft_clean(buf))
@@ -46,4 +49,3 @@ int	main(void)
 	return (0);
 }
 */
-

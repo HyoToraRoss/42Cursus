@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 12:29:45 by martavar          #+#    #+#             */
-/*   Updated: 2022/12/21 11:35:53 by martavar         ###   ########.fr       */
+/*   Created: 2022/12/21 10:55:34 by martavar          #+#    #+#             */
+/*   Updated: 2022/12/21 11:07:04 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-void sighandler(int signum) {
-   printf("Caught signal %d, coming out...\n", signum);
-   exit(1);
-}
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <signal.h>
 
-int main () {
-   signal(SIGINT, sighandler);
+void	(*signal(int sig, void (*func)(int)))(int);
 
-   while(1) {
-      printf("Going to sleep for a second...\n");
-      sleep(1); 
-   }
-   return(0);
-}
+#endif

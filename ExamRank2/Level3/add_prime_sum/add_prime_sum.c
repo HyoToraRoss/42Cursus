@@ -1,27 +1,27 @@
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putnbr(int nbr)
 {
-	write(1, &c, 1);
-}
+	char	c;
 
-void	ft_putnbr(int nb)
-{
-	unsigned int	nbr;
-
-	if (nb < 0)
+	if (nbr < 0)
 	{
-		ft_putchar('-');
-		nbr = nb * -1;
+		nbr = -nbr;
+		write(1, "-", 1);
+	}
+	if (nbr < 10)
+	{
+		c = nbr + '0';
+		write(1, &c, 1);
 	}
 	else
-		nbr = nb;
-	if (10 <= 10)
+	{
 		ft_putnbr(nbr / 10);
-	ft_putchar(nbr % 10 + 48);
+		ft_putnbr(nbr % 10);
+	}		
 }
 
-int is_prime(int nbr)
+int	is_prime(int nbr)
 {
 	int	i;
 
@@ -67,14 +67,14 @@ int	ft_atoi(char *str)
 	return (end * result);
 }
 
-int	main(int argc, char *argv)
+int	main(int argc, char **argv)
 {
 	int	nbr;
+	int	sum;
 
-	if (argc == 2 && nbr = ft_atoi(argv[1]) > 0)
+	if (argc == 2)
 	{
-		int sum;
-
+		nbr = ft_atoi(argv[1]);
 		sum = 0;
 		while (0 < nbr)
 		{

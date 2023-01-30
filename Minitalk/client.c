@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:29:16 by martavar          #+#    #+#             */
-/*   Updated: 2023/01/15 20:03:30 by martavar         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:30:10 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	{
 		/* data */
 	};
-	
 	if (argc == 3)
 	{
 		kill(argv[1], )

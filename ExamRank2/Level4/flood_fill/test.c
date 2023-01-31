@@ -14,7 +14,6 @@ char** make_area(char** zone, t_point size)
 			new[i][j] = zone[i][j];
 		new[i][size.x] = '\0';
 	}
-
 	return new;
 }
 

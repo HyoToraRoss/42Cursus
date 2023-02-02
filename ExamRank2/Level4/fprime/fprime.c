@@ -13,11 +13,17 @@ int main(int argc, char **argv)
 			printf("1");
 		while (nbr >= ++i)
 		{
-			if 
+			if (nbr % i == 0)
+			{
+				printf("%d", i);
+				if (nbr == 1)
+					break ;
+				printf("*");
+				nbr /= i;
+				i = 1;
+			}
+
 		}
-		printf("%d", nbr);
-		printf("\n");
 	}
-	else
-		printf("\n");
+	printf("\n");
 }

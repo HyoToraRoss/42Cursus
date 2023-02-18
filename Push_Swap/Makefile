@@ -1,50 +1,42 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/18 16:39:50 by martavar          #+#    #+#              #
-#    Updated: 2023/02/18 16:44:53 by martavar         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME		=	push_swap
+CC			=	cc
 
-SRC =		$(SRC_DIR)/main.c 				\
+SRCS		=	srcs/main.c
 
-OBJ			=	$(subst $(SRC_DIR), $(OBJ_DIR), $(SRC:.c=.o))
-
-SRC_DIR		=	srcs
-
-OBJ_DIR		=	objs
-
-NAME 		=	push_swap
+LIBFT		=	libft/libft.a
 
 INC			=	includes/
 
-CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror -I$(INC) -g -fsanitize=address
 
-CFLAGS		=	-Wall -Wextra -Werror -g -I$(INC) -g  -fsanitize=address
-RM			=	rm -rf
+RM			=	rm -f
 
-all:	$(NAME)
+OBJS		=	$(SRCS:%.c=%.o)
 
-$(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+all:		$(NAME)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -I /usr/local/include -c $< -o $@
+$(NAME):	$(OBJS)
+			@make -C libft
+			@make clean -C libft
+			$(CC) $(SRCS) $(LIBFT) $(CFLAGS) -I /usr/local/include -o $(NAME)
 
 clean:
-	@$(RM) $(OBJ_DIR)
+			@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
+			$(RM) $(OBJS)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			@echo $(PURPLE) "[🧹FCleaning...🧹]" $(EOC)
+			$(RM) $(NAME)
+			$(RM) *.out
+			make fclean -C libft/
 
-valgrind:	re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./push_swap
+re:			fclean all
 
-re: fclean all
+git:
+	@git add .
+	@git commit -m "$m"
+	@git push
+	@echo "Commit sent to github"
+# To call: make git m="my commit"
 
-.PHONY: clean all fclean re
+.PHONY:		all clean fclean re

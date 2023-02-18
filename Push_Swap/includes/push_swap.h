@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/02/11 19:07:14 by martavar         ###   ########.fr       */
+/*   Created: 2023/02/18 16:32:06 by martavar          #+#    #+#             */
+/*   Updated: 2023/02/18 16:52:02 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Create two lists
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-Verify the input, if it has any invalid character
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-Do a normal swap and see if all the movements work
+typedef struct s_stk
+{
+	int				nbr;
+	struct s_stk	*next;
+}	t_stk;
 
-After all that works well, I can think about the logic
+#endif

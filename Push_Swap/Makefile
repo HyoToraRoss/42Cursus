@@ -1,42 +1,65 @@
-NAME		=	push_swap
-CC			=	cc
+PS_NAME		=	push_swap
+# C_NAME		=	checker
 
-SRCS		=	srcs/main.c
+CC			=	gcc
 
-LIBFT		=	libft/libft.a
+LIB_DIR		=	libft/
+LIB			=	libft.a
 
-INC			=	includes/
+DIR			=	srcs/
+OBJ_DIR		=	obj/
+SUB_DIR		=	obj/ps_srcs obj/c_srcs
 
-CFLAGS		=	-Wall -Wextra -Werror -I$(INC) -g -fsanitize=address
+FLAG		=	-c			\
+				-Wall		\
+				-Wextra		\
+				-Werror
 
-RM			=	rm -f
+INCLUDE		=	-I include/				\
+				-I $(LIB_DIR)			\
 
-OBJS		=	$(SRCS:%.c=%.o)
+RM			=	/bin/rm -f
 
-all:		$(NAME)
+PS_FILES	=	main.c			\
 
-$(NAME):	$(OBJS)
-			@make -C libft
-			@make clean -C libft
-			$(CC) $(SRCS) $(LIBFT) $(CFLAGS) -I /usr/local/include -o $(NAME)
 
-clean:
-			@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
-			$(RM) $(OBJS)
+# C_FILES		=	c_srcs/c_main.c	
 
-fclean:		clean
-			@echo $(PURPLE) "[🧹FCleaning...🧹]" $(EOC)
-			$(RM) $(NAME)
-			$(RM) *.out
-			make fclean -C libft/
+PS_SRCS		=	$(addprefix $(DIR), $(PS_FILES))
+# C_SRCS		=	$(addprefix $(DIR), $(C_FILES))
+PS_OBJ		=	$(PS_SRCS:$(DIR)%.c=$(OBJ_DIR)%.o)
+# C_OBJ		=	$(C_SRCS:$(DIR)%.c=$(OBJ_DIR)%.o)
 
-re:			fclean all
+all			:	$(PS_NAME)	
+# $(C_NAME) 
 
-git:
-	@git add .
-	@git commit -m "$m"
-	@git push
-	@echo "Commit sent to github"
-# To call: make git m="my commit"
+obj/%.o		:	srcs/%.c
+				@mkdir -p $(OBJ_DIR) $(SUB_DIR)
+				$(CC) -g $(FLAG) $(INCLUDE) $< -o $@
 
-.PHONY:		all clean fclean re
+$(LIB)		:	
+				@$(MAKE) -C $(LIB_DIR)
+				/bin/mv $(LIB_DIR)$(LIB) .
+
+
+$(PS_NAME)	:	$(PS_OBJ) $(LIB) 
+				$(CC) -o $@ $^
+
+# $(C_NAME)	:	$(C_OBJ) $(LIB)
+				# $(CC) -fsanitize=address -o $@ $^
+
+clean		:	
+				for dir in $(MODULES); do			\
+					@$(MAKE) clean -C $$dir;		\
+				done
+				@/bin/rm -rf $(OBJ_DIR)
+
+fclean		:	clean
+				@$(MAKE) fclean -C $(LIB_DIR)
+				@$(RM) $(LIB)
+				@$(RM) $(PS_NAME)
+				# @$(RM) $(C_NAME)
+
+re			:	fclean all
+
+.PHONY		:	all clean fclean re

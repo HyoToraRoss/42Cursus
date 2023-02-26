@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/02/19 17:04:15 by martavar         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:03:59 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int	main(int argc, char **argv)
 		}
 		while (argv[i])
 		{		
-			if (ft_atoi(argv[i]) > -2147483648 && ft_atoi(argv[i]) <= 2147483647)
+			if (!(ft_atoi(argv[i]) > -2147483648 && ft_atoi(argv[i]) <= 2147483647))
 			{
 				printf("Error\n");
-				return (0);
+				return (1);
 			}
 			stk_a->next = create_new_node(ft_atoi(argv[i]));
 			stk_a = stk_a->next;

@@ -10,10 +10,12 @@ DIR			=	srcs/
 OBJ_DIR		=	obj/
 SUB_DIR		=	obj/ps_srcs obj/c_srcs
 
-FLAG		=	-c			\
-				-Wall		\
-				-Wextra		\
-				-Werror
+FLAG		=	-c				\
+				-Wall			\
+				-Wextra			\
+				-Werror			\
+				-g			\
+				-fsanitize=address	\
 
 INCLUDE		=	-I include/				\
 				-I $(LIB_DIR)			\

@@ -5,10 +5,9 @@
 int ft_strlen(char *str)
 {
 	int i = 0;
-
 	while (str[i])
 		i++;
-	return (i);
+	return(i);
 }
 
 char *ft_strncpy(char *dest, char *src, int n)
@@ -33,41 +32,28 @@ char    **ft_split(char *str)
 	int i = 0;
 	int j = 0;
 	int k = 0;
-	int word_count = 0;
-	int len = ft_strlen(str);
 
-	while (i < len)
-	{
-		while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-			i++;
-		if (str[i])
-		{
-			word_count++;
-			while(str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-				i++;
-		}
-	}
-	char **result = malloc(sizeof(char) * (word_count + 1));
-	if (!result)
+	char **split = malloc(sizeof(char **) * (ft_strlen(str) + 1));
+	if (!split)
 		return NULL;
-	i = 0;
-	while (i < len)
+	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;
-		if (str[i])
+		j = i;
+		while (str[i] && (str[i] != ' ' || !(str[i] >= 9 && str[i] <= 13)))
+			i++;
+		if (i > j)
 		{
-			j = i;
-			while (str[j] && !(str[j] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-				j++;
-			ft_strncpy(result[k], str + i, j - i);
-			result[k][j - i] = '\0';
+			split[k] = malloc(sizeof(char) * (i - j + 1));
+			if (!split[k])
+				return NULL;
+			split[k] = ft_strncpy(split[k], str + j, i);
 			k++;
-			i = j;
 		}
-		result[k] = NULL;
 	}
-	return (result);
+	split[k] = NULL;
+	return (split);
 }
 
 int	main(void)
@@ -76,7 +62,7 @@ int	main(void)
 	unsigned int	i;
 
 	i = 0;
-	tab = ft_split(" hello, sp    lit   this,plz,  ");
+	tab = ft_split(" hello, split   this,plz,  ");
 	while (tab[i] != NULL)
 	{
 		write(1, &tab[i], 1);

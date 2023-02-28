@@ -2,57 +2,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int ft_strlen(char *str)
+int count_words(char *str)
 {
-	int i = 0;
-	while (str[i])
-		i++;
-	return(i);
+	int num_words = 0;
+	while(*str == ' ' || )
 }
 
-char *ft_strncpy(char *dest, char *src, int n)
+char	**ft_split(char *str)
 {
-	int i = 0;
+	int	num_words;
+	char **split;
 
-	while(src[i] && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
+	num_words = count_words(str);
+	split = malloc(sizeof(char *) * num_words + 1);
 
-char    **ft_split(char *str)
-{
-	int i = 0;
-	int j = 0;
-	int k = 0;
-
-	char **split = malloc(sizeof(char **) * (ft_strlen(str) + 1));
-	if (!split)
-		return NULL;
-	while (str[i])
-	{
-		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			i++;
-		j = i;
-		while (str[i] && (str[i] != ' ' || !(str[i] >= 9 && str[i] <= 13)))
-			i++;
-		if (i > j)
-		{
-			split[k] = malloc(sizeof(char) * (i - j + 1));
-			if (!split[k])
-				return NULL;
-			split[k] = ft_strncpy(split[k], str + j, i);
-			k++;
-		}
-	}
-	split[k] = NULL;
+	split[num_words] = 0;
+	fill_str(split, str);
 	return (split);
 }
 

@@ -3,31 +3,21 @@
 
 int		word_counter(char *str)
 {
-	int i;
-	int checker;
-	int count;
+	int i = 0;
+	int counter = 0;
 
-	i = 0;
-	checker = 0;
-	count = 0;
 	while (str[i])
 	{
-		while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		if (str[i] > 32 && str[i] < 127)
 		{
-			i++;
-			checker = 0;
-		}
-		while (str[i] > 32 && str[i] < 127)
-		{
-			if (checker == 0)
-			{
-				count++;
-				checker = 1;
-			}
+			counter++;
+			while (str[i] && (str[i] > 32 && str[i] < 127))
 			i++;
 		}
+		else
+			i++;
 	}
-	return (count);
+	return (counter);
 }
 
 char	*sub_str_extracter(char *str)
@@ -54,16 +44,12 @@ char	*sub_str_extracter(char *str)
 
 char	**ft_split(char *str)
 {
-	char	**array;
-	int		size_arr;
-	int		j;
-	int		checker;
+	char	**split;
+	int		i = 0;
+	int		checker = 0;
 
-	j = 0;
-	checker = 0;
-	size_arr = word_counter(str);
-	array = malloc(sizeof(char*) * (size_arr + 1));
-	if (!array)
+	split = malloc(sizeof(char*) * (word_counter(str) + 1));
+	if (!split)
 		return NULL;
 	while (*str)
 	{
@@ -76,15 +62,14 @@ char	**ft_split(char *str)
 		{
 			if (checker == 0)
 			{
-				array[j] = sub_str_extracter(str);
-				j++;
-				checker = 1;
+				split[i] = sub_str_extracter(str);
+				i++;
 			}
 			str++;
 		}
 	}
-	array[j] = 0;
-	return (array);
+	split[i] = 0;
+	return (split);
 }
 
 

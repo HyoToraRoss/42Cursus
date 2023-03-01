@@ -64,6 +64,7 @@ char	**ft_split(char *str)
 			{
 				split[i] = sub_str_extracter(str);
 				i++;
+				checker = 1;
 			}
 			str++;
 		}

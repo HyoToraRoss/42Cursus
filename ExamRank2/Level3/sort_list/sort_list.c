@@ -20,7 +20,8 @@ t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 		else
 			lst = lst->next;
 	}
-	lst = begin;				// begin is a pointer to the first node, even its data its changed, the pointer didnt change
+// begin is a pointer to the first node, even its data its changed, the pointer didnt change
+	lst = begin;
 	return (lst);
 }
 

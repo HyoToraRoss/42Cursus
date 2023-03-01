@@ -72,7 +72,6 @@ char	**ft_split(char *str)
 	return (split);
 }
 
-
 int		main()
 {
 	char	**array;

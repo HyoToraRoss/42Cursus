@@ -25,7 +25,7 @@ char	*ft_itoa(int nbr)
 		str[0] = '-';
 		nbr *= -1;
 	}
-	while (nbr >= 0)
+	while (nbr)
 	{
 		str[--len] = nbr % 10 + '0';
 		nbr /= 10;
@@ -35,5 +35,5 @@ char	*ft_itoa(int nbr)
 
 int	main(void)
 {
-	printf("str:%s\n", ft_itoa(-2147483648));
+	printf("str:%s\n", ft_itoa(-214748367));
 }

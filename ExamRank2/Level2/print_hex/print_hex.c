@@ -36,6 +36,36 @@ int ft_atoi(char *str)
 	return (sign * result);
 }
 
+#include <unistd.h>
+
+int	ft_atoi(char *c)
+{
+	int red = 0;
+
+	while (*c)
+	{
+		red = red * 10 + *c - '0';
+		c++;
+	}
+	return (red);
+}
+
+void printbatatas(int n)
+{
+	char hex[] = "0123456789abcdef";
+
+	if (n >= 16)
+		printbatatas(n / 16);
+	write(1, &hex[n % 16], 1);
+}
+
+int main (int ac, char **av)
+{
+	if (ac == 2)
+		printbatatas(ft_atoi(av[1]));
+	write(1, "\n", 1);
+}
+
 int main(int argc, char **argv)
 {
 	if (argc == 2)

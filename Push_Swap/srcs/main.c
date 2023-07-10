@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/08 15:22:22 by martavar         ###   ########.fr       */
+/*   Updated: 2023/07/10 21:03:20 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@
 // After all that works well, I can think about the logic
 
 #include "../includes/push_swap.h"
+
+void	free_and_exit(int *numbers_in_a, int *numbers_in_b)
+{
+	free(numbers_in_a);
+	free(numbers_in_b);
+	exit(0);
+}
+
+void	free_and_exit_without_errors(int *numbers_in_a, int *numbers_in_b)
+{
+	free(numbers_in_a);
+	free(numbers_in_b);
+	write(1, "Error\n", 6);
+	exit(0);
+}
 
 void	check_parameters(int argc, char **argv, int *numbers_in_a, int *numbers_in_b)
 {
@@ -36,11 +51,20 @@ void	check_parameters(int argc, char **argv, int *numbers_in_a, int *numbers_in_
 		j = 0;
 		while (j < ft_strlen(argv[i]))
 		{
-			if (((argv[i][j] < 48)))
+			if (((argv[i][j] < 48) || (argv[i][j] > 57)) && (argv[i][j] != 32))
+			{
+				if (argv[i][j] != 45)
+					free_and_exit_without_errors(numbers_in_a, numbers_in_b);
+			}
+			if ((argv[i][j] == 32) && (argv[i][j + 1] == 32))
+				free_and_exit_without_errors(numbers_in_a, numbers_in_b);
+			j++;
 		}
+		i++;
 	}
-	
 }
+
+void	
 
 int	main(int argc, char **argv)
 {
@@ -52,5 +76,9 @@ int	main(int argc, char **argv)
 	numbers_in_stack_a = (int *)malloc(2 * sizeof(int));
 	numbers_in_stack_b = (int *)malloc(sizeof(int));
 	check_parameters(argc, argv, numbers_in_a, numbers_in_b);
+	set_numbers(numbers_in_a; numbers_in_b, argc);
+	stack_a = (long *)malloc(sizeof(long) * stack_size(argc));
+	stack_b = (long *)malloc(sizeof(long) * stack_size(argc, argv));
+	
 }
 

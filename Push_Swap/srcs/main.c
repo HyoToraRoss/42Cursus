@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/10 21:03:20 by martavar         ###   ########.fr       */
+/*   Updated: 2023/07/16 17:40:54 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,12 @@ void	check_parameters(int argc, char **argv, int *numbers_in_a, int *numbers_in_
 	}
 }
 
-void	
+void	set_numbers(int *numbers_in_a, int *numbers_in_b, int argc)
+{
+	numbers_in_a[0] = argc - 1;
+	numbers_in_a[1] = numbers_in_a[0];
+	*numbers_in_b = 0;
+}
 
 int	main(int argc, char **argv)
 {
@@ -79,6 +84,18 @@ int	main(int argc, char **argv)
 	set_numbers(numbers_in_a; numbers_in_b, argc);
 	stack_a = (long *)malloc(sizeof(long) * stack_size(argc));
 	stack_b = (long *)malloc(sizeof(long) * stack_size(argc, argv));
-	
+	if ((separating_input_numbers(stack_a, numbers_in_a, argv) == -1) 
+		|| (is_stack_sorted(stack_a, numbers_in_a) == 0))
+		free_stacks(stack_a, stack_b, numbers_in_a, numbers_in_b);
+	if ((numbers_in_a[1] == 2) && (stack_a[0] > stack_a[1]))
+		rotate_stack_a(stack_a, numbers_in_a);
+	else if (numbers_in_a[1] == 3)
+		sort_3_numbers(stack_a, numbers_in_a);
+	else if (numbers_in_a[1] == 5)
+		sort_5_numbers(stack_a, stack_b, numbers_in_a, numbers_in_b);
+	else
+		sort_more_than_5(stack_a, stack_b, numbers_in_a, numbers_in_b);
+	free_stacks(stack_a, stack_b, numbers_in_a, numbers_in_b);
+	return (0);
 }
 

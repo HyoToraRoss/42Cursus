@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/18 21:07:56 by martavar         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:25:37 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	free_and_exit_without_errors(int *numbers_in_a, int *numbers_in_b)
 
 void	check_parameters(int argc, char **argv, int *numbers_in_a, int *numbers_in_b)
 {
-	int	i;
-	int	j;
+	int					i;
+	long unsigned int	j;
 
 	i = 1;
 	j = 0;

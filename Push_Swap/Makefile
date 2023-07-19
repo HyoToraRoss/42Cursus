@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 SOURCE  =  srcs/*.c \
 		   libft/*.c \

@@ -1,67 +1,27 @@
-PS_NAME		=	push_swap
-# C_NAME		=	checker
+NAME = push_swap
 
-CC			=	gcc
+CC = gcc
 
-LIB_DIR		=	libft/
-LIB			=	libft.a
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
-DIR			=	srcs/
-OBJ_DIR		=	obj/
-SUB_DIR		=	obj/ps_srcs obj/c_srcs
+SOURCE  =  srcs/*.c \
+		   #sources/sorting/*.c \
+		   #sources/utils/*.c \
+		   #sources/main.c
 
-FLAG		=	-c				\
-				-Wall			\
-				-Wextra			\
-				-Werror			\
-				-g			\
-				-fsanitize=address	\
+$(NAME):
+	$(CC) $(FLAGS) $(SOURCE) -Iincludes -o $(NAME)
 
-INCLUDE		=	-I include/				\
-				-I $(LIB_DIR)			\
+all: $(NAME)
 
-RM			=	/bin/rm -f
+clean:
+	@rm -rf srcs/*.o
+	#@rm -rf sources/operations/*.o
+	#@rm -rf sources/sorting/*.o
+	#@rm -rf sources/utils/*.o
 
-PS_FILES	=	main.c			\
+fclean: clean
+	@rm -rf $(NAME)
 
+re: fclean all
 
-# C_FILES		=	c_srcs/c_main.c	
-
-PS_SRCS		=	$(addprefix $(DIR), $(PS_FILES))
-# C_SRCS		=	$(addprefix $(DIR), $(C_FILES))
-PS_OBJ		=	$(PS_SRCS:$(DIR)%.c=$(OBJ_DIR)%.o)
-# C_OBJ		=	$(C_SRCS:$(DIR)%.c=$(OBJ_DIR)%.o)
-
-all			:	$(PS_NAME)	
-# $(C_NAME) 
-
-obj/%.o		:	srcs/%.c
-				@mkdir -p $(OBJ_DIR) $(SUB_DIR)
-				$(CC) -g $(FLAG) $(INCLUDE) $< -o $@
-
-$(LIB)		:	
-				@$(MAKE) -C $(LIB_DIR)
-				/bin/mv $(LIB_DIR)$(LIB) .
-
-
-$(PS_NAME)	:	$(PS_OBJ) $(LIB) 
-				$(CC) -o $@ $^
-
-# $(C_NAME)	:	$(C_OBJ) $(LIB)
-				# $(CC) -fsanitize=address -o $@ $^
-
-clean		:	
-				for dir in $(MODULES); do			\
-					@$(MAKE) clean -C $$dir;		\
-				done
-				@/bin/rm -rf $(OBJ_DIR)
-
-fclean		:	clean
-				@$(MAKE) fclean -C $(LIB_DIR)
-				@$(RM) $(LIB)
-				@$(RM) $(PS_NAME)
-				# @$(RM) $(C_NAME)
-
-re			:	fclean all
-
-.PHONY		:	all clean fclean re

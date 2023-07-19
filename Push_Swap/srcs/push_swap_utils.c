@@ -6,9 +6,9 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:49:54 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/16 20:50:34 by martavar         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:08:41 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 

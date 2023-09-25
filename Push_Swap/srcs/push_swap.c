@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/19 21:33:30 by martavar         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:07:04 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ int	main(int argc, char **argv)
 	free_stacks(stack_a, stack_b, numbers_in_a, numbers_in_b);
 	return (0);
 }
-

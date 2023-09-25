@@ -6,7 +6,7 @@
 /*   By: martavar <martavar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:05:32 by martavar          #+#    #+#             */
-/*   Updated: 2023/07/19 20:31:31 by martavar         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:33:30 by martavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	main(int argc, char **argv)
 	long	*stack_b;
 	int		*numbers_in_a;
 	int		*numbers_in_b;
-	int i = 0;
 
 	numbers_in_a = (int *)malloc(2 * sizeof(int));
 	numbers_in_b = (int *)malloc(sizeof(int));
